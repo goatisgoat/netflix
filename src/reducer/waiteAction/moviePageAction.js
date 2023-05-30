@@ -6,7 +6,7 @@ const API_KEY = process.env.REACT_APP_API_KEY;
 function getMoviePageApi(search) {
   // 검색창에 글씨가 있으면 실행
   if (search) {
-    console.log(search, 'search')
+    console.log(search, "search");
     return async (dispatch) => {
       dispatch(moviePagePass.loading({}));
 
@@ -24,7 +24,6 @@ function getMoviePageApi(search) {
           moviePageSearch,
         })
       );
-  
     };
     // 검색창에 글씨가 없으면 실행
   } else if (search === null) {
@@ -35,36 +34,49 @@ function getMoviePageApi(search) {
         `/genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
 
-      let arr = [];
-      for (let i = 1; i <= 20; i++) {
-        let moviePageInfo1 = await moviePage.get(
-          `https://api.themoviedb.org/3/movie/popular?language=en-US&page=${i}`
-        );
-        arr = [...arr, ...moviePageInfo1.data.results];
-      }
+      let URL1 =
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1";
+      let URL2 =
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=2";
+      let URL3 =
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=3";
+      let URL4 =
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=4";
+      let URL5 =
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=5";
+      let URL6 =
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=6";
+      let URL7 =
+        "https://api.themoviedb.org/3/movie/popular?language=en-US&page=7";
 
-      dispatch(
-        moviePagePass.getMoviePageApi({
-          arr,
-          moviePageGenreApi,
-        })
+      const fetchURL = (url) => moviePage.get(url);
+
+      const promiseArray = [URL1, URL2, URL3, URL4, URL5, URL6, URL7].map(
+        fetchURL
       );
 
-      // const moviePageInfo1 = moviePage.get(
-      //   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
-      // );
-      // const moviePageInfo2 = moviePage.get(
-      //   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=2"
-      // );
-      // const moviePageInfo3 = moviePage.get(
-      //   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=3"
-      // );
-      // const moviePageInfo4 = moviePage.get(
-      //   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=4"
-      // );
-      // const moviePageInfo5 = moviePage.get(
-      //   "https://api.themoviedb.org/3/movie/popular?language=en-US&page=5"
-      // );
+      let arr = [];
+      Promise.all(promiseArray)
+        .then((data) => {
+          arr = [
+            ...data[0].data.results,
+            ...data[1].data.results,
+            ...data[2].data.results,
+            ...data[3].data.results,
+            ...data[4].data.results,
+            ...data[5].data.results,
+            ...data[6].data.results,
+          ];
+          console.log(arr);
+          dispatch(
+            moviePagePass.getMoviePageApi({
+              arr,
+              moviePageGenreApi,
+            })
+          );
+        })
+        .catch((err) => {});
+
 
       // let [
       //   moviePageData1,

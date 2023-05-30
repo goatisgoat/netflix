@@ -65,7 +65,10 @@ const MovieDetail = () => {
 
   return (
     <div>
-      <div className="detailmain"></div>
+      <div className="detailmain">
+        <h1>Netflix</h1>
+        <input type="text" placeholder="SEARCH"></input>
+      </div>
       <Container>
         <Row>
           <Col lg={6} className="detainContainer">
