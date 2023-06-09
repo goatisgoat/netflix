@@ -33,7 +33,6 @@ const MovieDetail = () => {
     runtime: detailItem.runtime,
   };
 
-
   // 쿼리값으로 영화 디테일 페이지 api접근
   const getDetailInfo = () => {
     dispatch(getDetailApi(search));
@@ -73,7 +72,6 @@ const MovieDetail = () => {
         <Row>
           <Col lg={6} className="detainContainer">
             <img
-              style={{ height: 800 }}
               src={`https://www.themoviedb.org/t/p/w1280/${detailItem.poster_path}`}
             ></img>
           </Col>

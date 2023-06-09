@@ -12,7 +12,7 @@ const ReviewSelected = () => {
   const { genreList } = useSelector((state) => state.movielist);
 
   return (
-    <div className={show === true ? 'reviewContainer' : 'relatedContainer'}>
+    <div className={show === true ? "reviewContainer" : "relatedContainer"}>
       <div className="ReviewButton">
         <Button onClick={() => setShoew(true)} variant="outline-danger">
           review
@@ -36,6 +36,9 @@ const ReviewSelected = () => {
           {relatedInfo.map((item) => {
             return (
               <div
+                onClick={() =>
+                  window.location.replace(`/movies/${item.id}/?q=${item.id}`)
+                }
                 style={{
                   backgroundImage: `url( https://www.themoviedb.org/t/p/w1280/${item.backdrop_path})`,
                   color: "white",
