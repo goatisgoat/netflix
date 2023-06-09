@@ -33,7 +33,13 @@
   position: relative;
   color: white;
   width: 35%;
+  border: 1px solid white;
+  height: 50%;
   top: 35%;
+  text-overflow: ellipsis;
+  /* white-space: nowrap; */
+  overflow: hidden;
+  /* -webkit-line-clamp: 3; */
   left: 80px;
   font-family: sans-serif;
 }
