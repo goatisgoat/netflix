@@ -38,6 +38,10 @@ const Navigation = () => {
     }
   };
 
+  const goToEvent = () => {
+    navigate(`/movies`);
+  };
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
@@ -71,7 +75,7 @@ const Navigation = () => {
               onChange={(e) => searchchChange(e)}
               onKeyPress={(e) => gotosearch(e)}
             />
-            <Button type="submit" variant="outline-danger">
+            <Button onClick={goToEvent} type="submit" variant="outline-danger">
               Search
             </Button>
           </Form>
