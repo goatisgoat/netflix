@@ -16,6 +16,7 @@ const Navigation = () => {
 
   // 검색값 입력
   const searchchChange = (e) => {
+    e.preventDefault();
     if (e.target.value === null) {
       setSearch("");
       dispatch(moviePagePass.search({ search }));
@@ -25,7 +26,7 @@ const Navigation = () => {
     }
   };
 
-   // 검색값 입력
+  // 검색값 입력
   useEffect(() => {
     dispatch(moviePagePass.search({ search }));
   }, [search]);
@@ -36,12 +37,13 @@ const Navigation = () => {
       navigate(`/movies`);
     }
   };
+
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
       <Container fluid>
         <Navbar.Brand href="/">
           <img
-          to={"/"}
+            to={"/"}
             width={80}
             src="https://blog.kakaocdn.net/dn/c4jzIT/btrghQIPMkh/sByblE0p50HHtMiEDdn8k1/img.png"
           />
@@ -69,7 +71,9 @@ const Navigation = () => {
               onChange={(e) => searchchChange(e)}
               onKeyPress={(e) => gotosearch(e)}
             />
-            <Button variant="outline-danger">Search</Button>
+            <Button type="submit" variant="outline-danger">
+              Search
+            </Button>
           </Form>
         </Navbar.Collapse>
       </Container>
