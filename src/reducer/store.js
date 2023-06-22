@@ -20,13 +20,7 @@ const persistConfig = {
 const persistedReducer = persistReducer(persistConfig, reducers);
 
 const store = configureStore({
-  // reducer: {
-  //   movielist : productSlice,
-  //   detail : detailSlice,
-  //   moviePage: moviePageSlice,
-  // },
   reducer: persistedReducer,
 });
 
 export default store;
-

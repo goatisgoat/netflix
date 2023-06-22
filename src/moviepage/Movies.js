@@ -40,30 +40,13 @@ const Movies = () => {
     setFilteredMovie(moviePage);
   }, [moviePage]);
 
-  // 페이지네이션-변수선언
-
   const [currentPage, setCurrentPage] = useState(1);
-  // 기본 시작 페이지
-
   const showPageNum = 6;
-  //보이고 싶은 카드 갯수(6개씩 보이고 싶음)
-
   const lastIndex = currentPage * showPageNum;
-  //ex(1페이지 * 6) = 6, (2페이지 * 6) = 12 (slice로 자를거라서 최종적으로 11이 됨)
-
   const firstIndex = lastIndex - showPageNum;
-  //lastIndex가 6이라면 - 6 = 0 (api 인덱스 번호가 0부터 시작이라서 첫번째 맞음)
-
   const npage = Math.ceil(filteredMovie.length / showPageNum);
-  //가져온 api배열의 총 길이 / 6 (나머지를 무조건 올리는 이유 = 페이지 갯수를 초과해서 카드를 모두 보이게 하기 위함)
-
   const records = filteredMovie.slice(firstIndex, lastIndex);
-  //filteredMovie(api) 배열에다가 보여줄 페이지 자르기 (처음은 1페이지니까 0 ~ 5 인덱스 까지 보임)
-
-
   const numbers = [...Array(npage + 1).keys()].slice(1);
-  //페이지 네이션 버튼의 갯수를 배열로 만들어줌
-
 
   const prePage = () => {
     if (currentPage !== 1) {
@@ -167,7 +150,9 @@ const Movies = () => {
     console.log(e.target.id, "btn");
     setFilteredMovie(
       moviePage.filter((item) => {
-        return (item.genre_ids.find((a) => a ===  Number(e.target.id) ? true : false))
+        return item.genre_ids.find((a) =>
+          a === Number(e.target.id) ? true : false
+        );
       })
     );
   };
@@ -193,8 +178,8 @@ const Movies = () => {
           <Col lg={2} className="moviePageLeft">
             <div className="sortContainer">
               <div className="sortBox">
-              <h4>Sort</h4>
-                
+                <h4>Sort</h4>
+
                 <FontAwesomeIcon
                   icon={faArrowRight}
                   className="Arrow"
@@ -221,7 +206,7 @@ const Movies = () => {
               <div className="filterBox">
                 <h4>Filter</h4>
                 <FontAwesomeIcon
-                className="Arrow"
+                  className="Arrow"
                   icon={faArrowRight}
                   onClick={() =>
                     filter === false ? setFilter(true) : setFilter(false)

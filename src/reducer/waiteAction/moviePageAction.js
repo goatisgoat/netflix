@@ -76,32 +76,6 @@ function getMoviePageApi(search) {
             );
           })
           .catch((err) => {});
-
-        // let [
-        //   moviePageData1,
-        //   moviePageData2,
-        //   moviePageData3,
-        //   moviePageData4,
-        //   moviePageData5,
-        //   moviePageGenredata,
-        // ] = await Promise.all([
-        //   moviePageInfo1,
-        //   moviePageInfo2,
-        //   moviePageInfo3,
-        //   moviePageInfo4,
-        //   moviePageInfo5,
-        //   moviePageGenreApi
-        // ]);
-        // dispatch(
-        //   moviePagePass.getMoviePageApi({
-        //     moviePageData1,
-        //     moviePageData2,
-        //     moviePageData3,
-        //     moviePageData4,
-        //     moviePageData5,
-        //     moviePageGenredata
-        //   })
-        // );
       };
     }
   } catch (err) {

@@ -7,14 +7,11 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 
-
-
 const MovieSlide = ({ item, title }) => {
   const [num, setNum] = useState(item.results);
   const [current, setCurrent] = useState(1);
   const slideContainer = useRef();
   const containerBox = useRef();
-  const navigate = useNavigate()
 
   useEffect(() => {
     if (current === 21) {
@@ -25,7 +22,6 @@ const MovieSlide = ({ item, title }) => {
       }, 500);
 
       return () => clearInterval(timer);
-      
     }
   }, [current]);
 
@@ -39,7 +35,6 @@ const MovieSlide = ({ item, title }) => {
       setCurrent(current + 1);
     }
   };
-
 
   useEffect(() => {
     if (current <= -3) {
@@ -55,7 +50,6 @@ const MovieSlide = ({ item, title }) => {
       return () => clearInterval(timer);
     }
   }, [current]);
-
 
   // 왼쪽으로 이동
   const left = () => {
@@ -76,12 +70,12 @@ const MovieSlide = ({ item, title }) => {
 
   return (
     <div className="slideContainer" ref={containerBox}>
-       <h2 style={{ color: "white" }}>{title}</h2>
+      <h2 style={{ color: "white" }}>{title}</h2>
       <div ref={slideContainer} className="second">
         {num.map((item, index) =>
           index > num.length - 5 ? (
             <div className="slideItme">
-              <MovieSlideComponenet item={item} index={index}  />
+              <MovieSlideComponenet item={item} index={index} />
             </div>
           ) : (
             ""
@@ -90,14 +84,14 @@ const MovieSlide = ({ item, title }) => {
 
         {num.map((item, index) => (
           <div className="slideItme">
-            <MovieSlideComponenet item={item} index={index}/>
+            <MovieSlideComponenet item={item} index={index} />
           </div>
         ))}
 
         {num.map((item, index) =>
           index < 6 ? (
             <div className="slideItme">
-              <MovieSlideComponenet item={item} index={index}/>
+              <MovieSlideComponenet item={item} index={index} />
             </div>
           ) : (
             ""
@@ -105,10 +99,10 @@ const MovieSlide = ({ item, title }) => {
         )}
       </div>
       <button onClick={left} className="btn1">
-      <FontAwesomeIcon icon={faArrowLeft} />
+        <FontAwesomeIcon icon={faArrowLeft} />
       </button>
       <button onClick={right} className="btn2">
-      <FontAwesomeIcon icon={faArrowRight} />
+        <FontAwesomeIcon icon={faArrowRight} />
       </button>
     </div>
   );

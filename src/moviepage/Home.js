@@ -24,7 +24,6 @@ const Home = () => {
         className="spinner"
         color="red"
         loading={true}
-        // cssOverride={}
         size={150}
         aria-label="Loading Spinner"
         data-testid="loader"

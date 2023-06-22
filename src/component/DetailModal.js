@@ -11,8 +11,6 @@ function DetailModal({ isOpen, setIsOpen }) {
       setIsOpen(false);
     }
   };
-  // console.log(modalRef.current, 'modalRef.current',e.target, 'e.target' )
-
   if (isOpen) {
     return (
       <div>
